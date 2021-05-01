@@ -221,6 +221,19 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&sdhc2_pin_a>;
 	};
+
+	remoteproc@fb21b000 {
+		status = "ok";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&wcnss_pin_a>;
+
+		smd-edge {
+			wcnss {
+				status = "ok";
+			};
+		};
+	};
 };
 
 &tlmm {
@@ -249,6 +262,16 @@
 			pins = "sdc2_cmd", "sdc2_data";
 			drive-strength = <10>;
 			bias-pull-up;
+		};
+	};
+
+	wcnss_pin_a: wcnss-pin-active {
+		wlan {
+			pins =  "gpio40", "gpio41", "gpio42", "gpio43", "gpio44";
+			function = "wlan";
+
+			drive-strength = <6>;
+			bias-pull-down;
 		};
 	};
 };
